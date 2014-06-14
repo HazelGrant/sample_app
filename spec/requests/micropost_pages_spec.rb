@@ -28,6 +28,14 @@ describe "Micropost pages" do
 			it "should create a micropost" do 
 				expect { click_button "Post" }.to change(Micropost, :count).by(1)
 			end
+
+			it { should have_content 'micropost' }
+
+			describe "pluralize sidebar micropost count" do 
+				before { fill_in 'micropost_content', with: "Natus sit" }
+				
+				it { should have_content('microposts') }
+			end
 		end
 	end
 
